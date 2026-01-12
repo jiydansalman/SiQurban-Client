@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&family=Poppins:ital,wght@300;400;500;600;700;800;900;1000&display=swap');
+
+/* Cara setting font & warna di Tailwind v4 */
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui;
+  --font-nunito: "Nunito", sans-serif;
+  --color-primary: #05AD72;
+  --color-primary-dark: #038a5f;
+}
+
+@layer base {
+  html, body {
+    font-family: "Poppins", sans-serif;
+    background-color: #FCFBF7;
+    margin: 0;
+    padding: 0;
+  }
+}
