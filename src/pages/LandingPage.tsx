@@ -1,11 +1,15 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import {useCountDown} from "../hooks/countDownDays";
 import heroBG from "../assets/herobg.png";
 import card1 from "../assets/card1rmv.png";
 import card2 from "../assets/card2.png";
 import card3 from "../assets/card3.png";
 
 const LandingPage = () => {
+
+  const daysLeft = useCountDown("2026-05-27T00:00:00");
+
   return (
     <div className="bg-[#FCF8ED] min-h-screen font-sans">
       <Navbar />
@@ -16,7 +20,7 @@ const LandingPage = () => {
         <div className="w-full max-w-7xl mx-auto">
           <h1 className="font-sans text-[#05AD72] font-extrabold text-[70px] leading-tight text-left">
             Assalammu'alaikum <br />
-            <span className="text-[#1F7A63] font-nunito">100 </span><span>Hari Menuju</span>  <br />
+            <span className="text-[#1F7A63] font-nunito">{daysLeft} </span><span>Hari Menuju</span>  <br />
             <span className="text-[#1F7A63] font-nunito">Idul Adha</span>
           </h1>
           <p className="text-gray-700 text-[24px] my-8 font-medium">
