@@ -12,7 +12,6 @@ const LandingPage = () => {
 
   return (
     <div className="bg-[#FCF8ED] min-h-screen font-sans">
-      <Navbar />
 
       {/* Hero Section */}
       <section className="relative h-[710px] bg-cover bg-center flex items-center" 
@@ -89,7 +88,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 } 

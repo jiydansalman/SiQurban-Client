@@ -6,7 +6,6 @@ import heroPaket from "../assets/heroPaket.png";
 const PaketPage = () => {
     return (
         <div className="bg-[#FDF6EC] min-h-screen font-sans">
-            <Navbar />
 
             {/* HERO PAKET */}
             <section className="relative h-[680px] bg-cover bg-center flex items-center" 
@@ -47,6 +46,9 @@ const PaketPage = () => {
                             <h2 className="flex items-start text-[40px] font-extrabold  font-nunito text-[#1F7A63]">
                                 Paket Qurban
                             </h2>
+                            <h3 className="text-black text-2xl">
+                                Tekan "Lihat Detail" untuk melihat gambar asli dan detail hewan
+                            </h3>
                         </div>
                         <div className="grid grid-cols-2 gap-8 mt-8">
                             <h1>hellow</h1>

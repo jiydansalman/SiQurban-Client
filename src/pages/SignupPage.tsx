@@ -75,7 +75,7 @@ return (
             </button>
 
             <div className="text-center mt-4 text-sm">
-              <a href="#" className="text-[#1F7A63] font-medium hover:underline">
+              <a href="/login" className="text-[#1F7A63] font-medium hover:underline">
                 Sudah punya akun
               </a>
             </div>
