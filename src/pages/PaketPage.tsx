@@ -1,6 +1,3 @@
-import navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import heroPaket from "../assets/heroPaket.png";
 
 const PaketPage = () => {

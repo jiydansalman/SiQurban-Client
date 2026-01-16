@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import {useCountDown} from "../hooks/countDownDays";
 import heroBG from "../assets/herobg.png";
 import card1 from "../assets/card1rmv.png";
