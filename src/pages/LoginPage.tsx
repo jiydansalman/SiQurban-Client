@@ -1,7 +1,37 @@
+import React from "react";  
+import { useNavigate, Link } from 'react-router-dom';
+import axios from '../api/axios';
 import bgLogin from "../assets/bg login.png";
 import logoHitam from "../assets/logo_hitam.png";
 
 const LoginPage = () => {
+  const [formData, setFormData] = React.useState({
+    username: '', password: ''
+  });
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    try{
+      const response = await axios.post('/login', formData);
+
+      if (response.data.status === 'Success'){
+        // Simpan token dan info user ke localStorage
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        navigate('/');
+        window.location.reload();
+      }
+    } catch (err:any){
+      setError(err.response?.data?.message || 'Terjadi kesalahan saat masuk');
+    }
+  }
+
+
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center font-nunito"
@@ -27,36 +57,49 @@ const LoginPage = () => {
               Masuk ke Siddiq Qurban
             </h2>
 
-            {/* Username */}
-            <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Username"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 
-                focus:outline-none focus:ring-2 focus:ring-[#1F7A63]"
-              />
-            </div>
+            {error && (
+              <div className= "text-red-500 text-sm mb-4 text-center">
+                {error}
+              </div>
+            )}
 
-            {/* Password */}
-            <div className="mb-2">
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 
-                focus:outline-none focus:ring-2 focus:ring-[#1F7A63]"
-              />
-            </div>
+            <form onSubmit={handleSubmit}>
+              {/* username */}
+              <div className="mb-4">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={(e) => setFormData({...formData, username: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 
+                  focus:outline-none focus:ring-2 focus:ring-[#1F7A63]"
+                />
+              </div>
 
-            <div className="text-right text-sm text-gray-500 mb-4">
-              <a href="#" className="hover:text-[#1F7A63]">
-                Lupa password?
-              </a>
-            </div>
+              {/* Password */}
+              <div className="mb-2">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 
+                  focus:outline-none focus:ring-2 focus:ring-[#1F7A63]"
+                />
+              </div>
 
-            <button className="w-full bg-[#1F7A63] hover:bg-[#17614F] text-white py-3 rounded-lg font-semibold transition">
-              Masuk
-            </button>
+              <div className="text-right text-sm text-gray-500 mb-4">
+                <a href="#" className="hover:text-[#1F7A63]">
+                  Lupa password?
+                </a>
+              </div>
 
+              <button className="w-full bg-[#1F7A63] hover:bg-[#17614F] text-white py-3 rounded-lg font-semibold transition">
+                Masuk
+              </button>
+
+            </form>
+            
             <div className="text-center mt-4 text-sm">
               <a href="/signup" className="text-[#1F7A63] font-medium hover:underline">
                 Daftar Akun Baru
